@@ -79,6 +79,14 @@ typedef struct s_raycast
 	int		map_y; //cella mappa y
 }	t_raycast;
 
-//ultima struct s_mlx
+typedef struct s_mlx
+{
+	void	*mlx_ptr; //puntatore connesione MLX
+	void	*win_ptr; //puntatore per la finestra (importante)
+	void	*img_ptr; //puntatore immagine da renderizzare
+	char	*img_data; //buffer dei pixel dell'immagine
+	int		window_width; //larghezza finestra
+	int		window_heigt; //altezza finestra
+}	t_map;
 
 #endif
