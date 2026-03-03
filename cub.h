@@ -15,9 +15,13 @@ typedef struct s_texture
 	char	*W_path; //texture muro Ovest
 	//struttura immagine
 	void	*N_img; //puntatore immagine Nord
+	void	*N_data; //puntatore immagine Nord
 	void	*S_img; //puntatore immagine Sud
+	void	*S_data; //puntatore immagine Sud
 	void	*E_img; //puntatore immagine Est
+	void	*E_data; //puntatore immagine Est
 	void	*W_img; //puntatore immagine Ovest
+	void	*W_data; //puntatore immagine Ovest
 	int		tex_width; //larghezza texture
 	int		tex_height; //altezza texture
 }	t_texture;
@@ -81,13 +85,25 @@ typedef struct s_raycast
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr; //puntatore connesione MLX
-	void	*win_ptr; //puntatore per la finestra (importante)
+	void	*process; //puntatore connesione MLX
+	void	*win; //puntatore per la finestra (importante)
 	void	*img_ptr; //puntatore immagine da renderizzare
 	char	*img_data; //buffer dei pixel dell'immagine
-	int		window_width; //larghezza finestra
-	int		window_height; //altezza finestra
+	int		width; //larghezza finestra
+	int		height; //altezza finestra
 }	t_mlx;
+
+//struttura principale del gioco, x richiamare le altre 
+typedef struct s_game
+{
+	t_texture	texture; //struttura per le texture
+	t_colors	colors; //struttura per i colori
+	t_map		map; //struttura per la mappa
+	t_player	player; //struttura per il giocatore
+	t_camera	camera; //struttura per la camera
+	t_raycast	raycast; //struttura per il raycasting
+	t_mlx		mlx; //struttura per MLX
+}	t_game;
 
 void	calc_map_width(t_map *map);
 
