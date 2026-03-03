@@ -9,17 +9,17 @@
 
 typedef struct s_texture
 {
-	char	*N_phat; //texture muro Nord
-	char	*S_phat; //texture muro Sud
-	char	*E_phat; //texture muro Est
-	char	*W_phat; //texture muro Ovest
+	char	*N_path; //texture muro Nord
+	char	*S_path; //texture muro Sud
+	char	*E_path; //texture muro Est
+	char	*W_path; //texture muro Ovest
 	//struttura immagine
 	void	*N_img; //puntatore immagine Nord
 	void	*S_img; //puntatore immagine Sud
 	void	*E_img; //puntatore immagine Est
 	void	*W_img; //puntatore immagine Ovest
 	int		tex_width; //larghezza texture
-	int		tex_heigt; //altezza texture
+	int		tex_height; //altezza texture
 }	t_texture;
 
 typedef struct s_colors
@@ -43,7 +43,7 @@ typedef struct s_map
 {
 	char	**map; //mappa, array di stringhe
 	int		width; //larghezza mappa
-	int		heigt; //altezza mappa
+	int		height; //altezza mappa
 	int		n_players; //numeri giocatori (deve essere 1)
 	bool	map_valid; //booleano per verificare che la mappa sia valida
 }	t_map;
@@ -86,7 +86,13 @@ typedef struct s_mlx
 	void	*img_ptr; //puntatore immagine da renderizzare
 	char	*img_data; //buffer dei pixel dell'immagine
 	int		window_width; //larghezza finestra
-	int		window_heigt; //altezza finestra
-}	t_map;
+	int		window_height; //altezza finestra
+}	t_mlx;
+
+void	calc_map_width(t_map *map);
+
+int		valid_char(char c);
+int		is_player(char c);
+int		init_map(t_map *map);
 
 #endif
