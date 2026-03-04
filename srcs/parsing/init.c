@@ -61,20 +61,18 @@ void	init_camera(t_camera *camera)
 
 void init_raycast(t_raycast *raycast)
 {
-	raycast->camera_x = 0.0;
+	raycast->pos_dir_x = 0.0;
+	raycast->pos_dir_y = 0.0;
 	raycast->ray_dir_x = 0.0;
 	raycast->ray_dir_y = 0.0;
-	raycast->map_x = 0;
-	raycast->map_y = 0;
+	raycast->dist_x = 0.0;
+	raycast->dist_y = 0.0;
 	raycast->side_dist_x = 0.0;
 	raycast->side_dist_y = 0.0;
-	raycast->delta_dist_x = 0.0;
-	raycast->delta_dist_y = 0.0;
-	raycast->perp_wall_dist = 0.0;
-	raycast->step_x = 0;
-	raycast->step_y = 0;
-	raycast->hit = 0; //se è 1 c'è stato un colpo
-	raycast->side = 0; //se è 1 il muro è verticale, se è 0 il muro è orizzontale
+	raycast->map_x = 0;
+	raycast->map_y = 0;
+	//raycast->hit = 0; //se è 1 c'è stato un colpo
+	//raycast->side = 0; //se è 1 il muro è verticale, se è 0 il muro è orizzontale
 }
 
 void init_mlx(t_mlx *mlx)

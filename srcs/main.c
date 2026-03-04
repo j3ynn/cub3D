@@ -21,5 +21,5 @@ int main(int ac, char **av)
         ft_exit_error("Usage: ./cub3d <map.cub>\n");
     ft_init_struct(&game);
     //parte del parsing
-    init_game(&game);
+    set_game(&game);
 }
