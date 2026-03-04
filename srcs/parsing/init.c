@@ -59,7 +59,7 @@ void	init_camera(t_camera *camera)
 	camera->plane_y = 0.0;
 }
 
-void init_raycast(t_raycast *raycast)
+void 	init_raycast(t_raycast *raycast)
 {
 	raycast->pos_dir_x = 0.0;
 	raycast->pos_dir_y = 0.0;

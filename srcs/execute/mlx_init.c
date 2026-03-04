@@ -10,5 +10,5 @@ void    set_game(t_game *game)
     //stesso check
     //COSA IMPORTANTE DA FARE
     //mlx.width e mlx.height non sono inizializzati, impostare i valori a 1024 e 768 (momentanemente per i test)
-    set_img(game);
+    //set_img(game);
 }

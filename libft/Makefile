@@ -32,21 +32,21 @@ OBJECTS = $(SOURCES:.c=.o)
 BONUS_OBJECTS = $(BONUS:.c=.o)
 
 $(NAME): $(OBJECTS)
-	$(AR) $@ $^
+	@$(AR) $@ $^
 
 bonus: $(BONUS_OBJECTS)
-	$(AR) $(NAME) $^
+	@$(AR) $(NAME) $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
+	@$(RM) $(OBJECTS) $(BONUS_OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

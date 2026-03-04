@@ -1,7 +1,7 @@
 #include "cub.h"
 
 //qui "sistemiamo" tutte le nostre strutture
-void    ft_init_struct(t_game *game)
+void    init_struct(t_game *game)
 {
     init_texture(&game->texture);
     init_colors(&game->colors);
@@ -15,11 +15,12 @@ void    ft_init_struct(t_game *game)
 //funzione per gli error/exit e' da implementare
 int main(int ac, char **av)
 {
+    (void)av; //senza mi da problemi con il compilatore perche ancora non lo usiamo
     t_game game;
 
     if (ac != 2)
-        ft_exit_error("Usage: ./cub3d <map.cub>\n");
-    ft_init_struct(&game);
+        ft_error("Usage: ./cub3d <map.cub>\n");
+    init_struct(&game);
     //parte del parsing
     set_game(&game);
 }

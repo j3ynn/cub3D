@@ -60,5 +60,5 @@ int	check_map_char(t_map *map)
 		printf("Error must have exatly 1 player\n");
 		return 0;
 	}
-
+	return (1); //dava errore manca il return in caso di "successo"
 }

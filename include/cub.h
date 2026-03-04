@@ -1,11 +1,37 @@
 #ifndef CUBE3D_H
 # define CUB3D_H
 
-#include "libft/libft.h"
-//#include "mlx"
+#include "libft.h"
+#include "mlx.h"
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
+/* **************************************************************************** */
+/*                                  COLORS                                      */
+/* **************************************************************************** */
+
+#define RED         "\033[1;31m"
+#define GREEN       "\033[1;32m"
+#define YELLOW      "\033[1;33m"
+#define CYAN        "\033[1;36m"
+#define MAGENTA     "\033[1;35m"
+#define BLUE        "\033[1;34m"
+#define WHITE       "\033[1;37m"
+#define RED_S       "\033[31m"
+#define GREEN_S     "\033[32m"
+#define YELLOW_S    "\033[33m"
+#define CYAN_S      "\033[36m"
+#define MAGENTA_S   "\033[35m"
+#define BLUE_S      "\033[34m"
+#define WHITE_S     "\033[37m"
+#define RESET       "\033[0m"
+
+/* **************************************************************************** */
+/*                                  STRUCT                                      */
+/* **************************************************************************** */
 
 typedef struct s_texture
 {
@@ -105,10 +131,35 @@ typedef struct s_game
 	t_mlx		mlx; //struttura per MLX
 }	t_game;
 
+/* **************************************************************************** */
+/*                                FUNZIONI                                      */
+/* **************************************************************************** */
+
 void	calc_map_width(t_map *map);
 
 int		valid_char(char c);
 int		is_player(char c);
-int		init_map(t_map *map);
+int		init_map(t_map *map); //si puo mettere sotto
+
+/* ***************************************** */
+/*                  INIT                     */
+/* ***************************************** */
+void	init_struct(t_game *game);
+void	init_texture(t_texture *texture);
+void	init_colors(t_colors *colors);
+void	init_player(t_player *player);
+void	init_camera(t_camera *camera);
+void 	init_raycast(t_raycast *raycast);
+void 	init_mlx(t_mlx *mlx);
+
+/* ****************************************** */
+/*                  ERROR                     */
+/* ****************************************** */
+void    ft_error(char *str);
+
+/* ****************************************** */
+/*                  EXCUTE                    */
+/* ****************************************** */
+void    set_game(t_game *game);
 
 #endif
