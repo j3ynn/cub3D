@@ -1,9 +1,11 @@
 #include "cub.h"
 
-void    ft_init_mlx(t_game game)
+void    init_game(t_game *game)
 {
     game->mlx.process = mlx_init();
     //mettere i check "if (!game->mlx.process)"
+    game->mlx.width = 1024;
+    game->mlx.height = 768;
     game->mlx.win = mlx_new_window(game->mlx.process, game->mlx.width, game->mlx.height, "cub3d");
     //stesso check
     //COSA IMPORTANTE DA FARE
