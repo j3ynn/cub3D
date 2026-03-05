@@ -19,7 +19,7 @@ int main(int ac, char **av)
     t_game game;
 
     if (ac != 2)
-        ft_error("Usage: ./cub3d <map.cub>\n");
+        ft_error("Usage: ./cub3d 'map.cub'\n");
     init_struct(&game);
     //parte del parsing
     set_game(&game);

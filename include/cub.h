@@ -13,6 +13,9 @@
 /*                                  COLORS                                      */
 /* **************************************************************************** */
 
+#define LAVENDER   	"\033[1;38;2;230;190;255m"
+#define ORCHID    	"\033[1;38;2;218;112;214m"
+#define PLUM      	"\033[1;38;2;221;160;221m"
 #define RED         "\033[1;31m"
 #define GREEN       "\033[1;32m"
 #define YELLOW      "\033[1;33m"
@@ -33,7 +36,8 @@
 /*                                  STRUCT                                      */
 /* **************************************************************************** */
 
-typedef struct s_texture
+//trppo lunga(?) sotto ti spiego come usarla
+/*typedef struct s_texture
 {
 	char	*N_path; //texture muro Nord
 	char	*S_path; //texture muro Sud
@@ -50,6 +54,30 @@ typedef struct s_texture
 	void	*W_data; //puntatore immagine Ovest
 	int		tex_width; //larghezza texture
 	int		tex_height; //altezza texture
+}	t_texture;*/
+
+//esempio, se devi inserire il path della texture nord, basta che scrivi
+// game->textures.no.path (so che e' un po' piu' lungo, e' ppiu per comodita dopo trust me)
+// ci sono altri modi, in caso te li spiego appena ci vediamo
+
+typedef struct	s_tex
+{
+	char	*path; //path della texture di ogni muro
+	void	*img;
+	char	*data;
+	int		w; //sia questa che "h" verranno modificato automaticamente
+	int		h; // dalla funzione mlx_xmp_file_to_image(...)
+	int		bpp; //sono importanti(?) devo capire bene come usarle
+	int		line_len;
+	int 	endian;
+} 	t_tex;
+
+typedef struct	s_texture
+{
+	t_tex	no;
+	t_tex	so;
+	t_tex	ea;
+	t_tex	we;
 }	t_texture;
 
 typedef struct s_colors
@@ -156,6 +184,7 @@ void 	init_mlx(t_mlx *mlx);
 /*                  ERROR                     */
 /* ****************************************** */
 void    ft_error(char *str);
+void    exit_game(t_game *game, char *str);
 
 /* ****************************************** */
 /*                  EXCUTE                    */

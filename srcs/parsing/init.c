@@ -12,22 +12,24 @@ int	init_map(t_map *map)
 
 // FUNZIONI PER INIZIALIZZARE TUTTE LE STRUTTURE
 
+void	init_tex(t_tex *tex)
+{
+	tex->path = NULL;
+	tex->img = NULL;
+	tex->data = NULL;
+	tex->w = 0;
+	tex->h = 0;
+	tex->bpp = 0;
+	tex->line_len = 0;
+	tex->endian = 0;
+}
+
 void	init_texture(t_texture *texture)
 {
-	texture->N_path = NULL;
-	texture->S_path = NULL;
-	texture->E_path = NULL;
-	texture->W_path = NULL;
-	texture->N_img = NULL;
-	texture->N_data = NULL;
-	texture->S_img = NULL;
-	texture->S_data = NULL;
-	texture->E_img = NULL;
-	texture->E_data = NULL;
-	texture->W_img = NULL;
-	texture->W_data = NULL;
-	texture->tex_width = 0;		//valori da impostare dopo aver caricato le texture
-	texture->tex_height = 0; 	//capire meglio argomento ????
+	init_tex(&texture->no);
+	init_tex(&texture->so);
+	init_tex(&texture->ea);
+	init_tex(&texture->we);
 }
 
 // valori impostati a -1 perche' i colori sono compresi tra 0 e 255, se rimangono a -1 vuol dire che non sono stati impostati
@@ -81,7 +83,7 @@ void init_mlx(t_mlx *mlx)
 	mlx->win = NULL;
 	mlx->img_ptr = NULL;
 	mlx->img_data = NULL;
-	mlx->width = 0;
-	mlx->height = 0;
+	mlx->width = 800;
+	mlx->height = 600;
 }
 
