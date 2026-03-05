@@ -64,12 +64,12 @@ typedef struct	s_tex
 {
 	char	*path; //path della texture di ogni muro
 	void	*img;
-	char	*data;
-	int		w; //sia questa che "h" verranno modificato automaticamente
-	int		h; // dalla funzione mlx_xmp_file_to_image(...)
-	int		bpp; //sono importanti(?) devo capire bene come usarle
-	int		line_len;
-	int 	endian;
+	char	*data; //puntatore ai pixel
+	int		w; //larghezza vera della texture (tramite mlx_xmp_file_to_image(...))
+	int		h; //altezza vera della texture (tramite mlx_xmp_file_to_image(...))
+	int		bpp; //bits per pixel
+	int		line_len; //bytes per riga
+	int 	endian; //ordine dei byte (credo non serva idk)
 } 	t_tex;
 
 typedef struct	s_texture
@@ -190,5 +190,8 @@ void    exit_game(t_game *game, char *str);
 /*                  EXCUTE                    */
 /* ****************************************** */
 void    set_game(t_game *game);
+void    set_texture(t_game *game);
+
+void    load_texture(t_game *game, t_tex *tex);
 
 #endif
