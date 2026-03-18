@@ -1,17 +1,6 @@
-!!!controllare in cub.h
+ho aggiunto nel parsing il file init, per inizializzare le 
+strutture così non va in errore
 
-riga 4 - 12 - 34 - 68 - 97
+altra cosa init_map l'ho spsostata nel file init, cosi rimane piu organizzato
 
-mettere li file cub.h in una cartella "include" scritto proprio cosi
-(senno non funziona il makefile)
-
-dopo che hai fatto queste modifiche
-possiamo fare direttamente il merge
-
-cosi si aggiungono in automatico le mie cose, non dovrebbe dare problemi
-
-dopo il merge si aggiunge in automatico la libreria mlx il makefile e 
-la cartella execute con i miei file.
-
-nella parte parsing si aggiunge il file init.c error.c e il main (dove puoi aggiungere
-la parte tua del parsing)
+se vuoi nel main puoi iniziare a collegarti con il parser

@@ -1,13 +1,17 @@
 #ifndef CUBE3D_H
 # define CUB3D_H
 
-#include "libft/libft.h"
-//#include "mlx.h"
+#include "libft.h"
+#include "mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
+/* **************************************************************************** */
+/*                                  COLORS                                      */
+/* **************************************************************************** */
 
 #define LAVENDER   	"\033[1;38;2;230;190;255m"
 #define ORCHID    	"\033[1;38;2;218;112;214m"
@@ -27,6 +31,10 @@
 #define BLUE_S      "\033[34m"
 #define WHITE_S     "\033[37m"
 #define RESET       "\033[0m"
+
+/* **************************************************************************** */
+/*                                  STRUCT                                      */
+/* **************************************************************************** */
 
 typedef struct s_map
 {
@@ -117,13 +125,18 @@ typedef struct s_mlx
 
 typedef struct s_game
 {
-	t_map		map;
-	t_player	player;
-	t_texture	texture;
-	t_colors	colors;
-	t_camera	camera;
-	t_raycast	reycast;
+	t_texture	texture; //struttura per le texture
+	t_colors	colors; //struttura per i colori
+	t_map		map; //struttura per la mappa
+	t_player	player; //struttura per il giocatore
+	t_camera	camera; //struttura per la camera
+	t_raycast	raycast; //struttura per il raycasting
+	t_mlx		mlx; //struttura per MLX
 }	t_game;
+
+/* **************************************************************************** */
+/*                                FUNZIONI                                      */
+/* **************************************************************************** */
 
 void	calc_map_width(t_map *map);
 void	flood_fill(t_map *map, int x, int y);
@@ -131,12 +144,37 @@ void	ft_free(char **arr);
 
 int		valid_char(char c);
 int		is_player(char c);
-int		init_map(t_map *map);
 int		finally_map(char *line);
 int		error_player(t_map *map);
 int		valid_texture(t_texture *texture, char *line);
 int		valid_colors(t_colors *colors, char *line);
 int		valid_map(t_map *map);
 int		valid_player(t_map *map, t_player *player);
+
+/* ***************************************** */
+/*                  INIT                     */
+/* ***************************************** */
+int		init_map(t_map *map);
+void	init_struct(t_game *game);
+void	init_texture(t_texture *texture);
+void	init_colors(t_colors *colors);
+void	init_player(t_player *player);
+void	init_camera(t_camera *camera);
+void 	init_raycast(t_raycast *raycast);
+void 	init_mlx(t_mlx *mlx);
+
+/* ****************************************** */
+/*                  ERROR                     */
+/* ****************************************** */
+void    ft_error(char *str);
+void    exit_game(t_game *game, char *str);
+
+/* ****************************************** */
+/*                  EXCUTE                    */
+/* ****************************************** */
+void    set_game(t_game *game);
+void    set_texture(t_game *game);
+
+void    load_texture(t_game *game, t_tex *tex);
 
 #endif
