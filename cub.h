@@ -1,11 +1,15 @@
 #ifndef CUBE3D_H
 # define CUB3D_H
 
+/* GUARDARE LE LIBRERIE DA INCLUDERE */
+
 #include "libft/libft.h"
 //#include "mlx"
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
+/* AGGIUNGERE I COLORI */
 
 typedef struct s_map
 {
@@ -26,6 +30,8 @@ typedef struct s_player
 	char	spawn_dir; //direzione di spawn (N, S, E, W)
 	int		exists; //se il giocatore è nella mappa
 }	t_player;
+
+/* MODIFICARE LE STRUCT TEXTURE */
 
 typedef struct s_texture
 {
@@ -59,6 +65,7 @@ typedef struct s_colors
 //lilla = 221,160,221 HEX = 0xDDA0DD
 //pesca = 255,218,185 HEX = 0xFFDAB9
 
+/* AGGIUNGERE STRUCT A T_GAME */
 typedef struct s_game
 {
 	t_map		map;
@@ -87,6 +94,7 @@ typedef struct s_raycast
 	int		map_y; //cella mappa y
 }	t_raycast;
 
+/* MODIFICHE IN T_MLX */
 typedef struct s_mlx
 {
 	void	*mlx_ptr; //puntatore connesione MLX
