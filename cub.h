@@ -90,9 +90,15 @@ typedef struct s_mlx
 }	t_mlx;
 
 void	calc_map_width(t_map *map);
+void	flood_fill(t_map *map, int x, int y);
+void	ft_free(char **arr);
 
 int		valid_char(char c);
 int		is_player(char c);
 int		init_map(t_map *map);
+int		check_map_char(t_map *map, t_player *player);
+int		finally_map(char *line);
+int		valid_texture(t_texture *texture, char *line);
+int		valid_colors(t_colors *colors, char *line);
 
 #endif

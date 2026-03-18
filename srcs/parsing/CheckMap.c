@@ -1,6 +1,6 @@
 #include "cub.h"
 
-//calcola la lunghezza della mappa
+//calcola la larghezza massima della mappa
 void	calc_map_width(t_map *map)
 {
 	int	i = 0;
@@ -9,13 +9,13 @@ void	calc_map_width(t_map *map)
 	while (i < map->height)
 	{
 		len = ft_strlen(map->map[i]);
-		if (len < map->width)
+		if (len > map->width)
 			map->width = len;
 		i++;
 	}
 }
 
-//controllo se i caratteri sono validi
+//controllo se i caratteri della mappa sono validi
 int	valid_char(char c)
 {
 	if (c == '1' || c == '0' || c == ' ' || c == 'N'
@@ -34,14 +34,15 @@ int	is_player(char c)
 		return 0;
 }
 
-//valida i caratteri della mappa e controlla che ci sia un solo giocatore
-int	check_map_char(t_map *map)
+//valida i caratteri della mappa e controlla che ci sia un solo giocatore + salva la sua posizione
+int	check_map_char(t_map *map, t_player *player)
 {
 	int	i = 0;
-	int	j = 0;
+	int	j;
 
 	while (i < map->height)
 	{
+		j = 0;
 		while (map->map[i][j])
 		{
 			if (!valid_char(map->map[i][j]))
@@ -50,7 +51,12 @@ int	check_map_char(t_map *map)
 				return 0;
 			}
 			if (is_player(map->map[i][j]))
+			{
 				map->n_players++;
+				player->pos_y = i;
+				player->pos_x = j;
+				player->spawn_dir = map->map[i][j];
+			}
 			j++;
 		}
 		i++;
@@ -60,5 +66,5 @@ int	check_map_char(t_map *map)
 		printf("Error must have exatly 1 player\n");
 		return 0;
 	}
-
-}
+	return (1);
+}//dividerla in due
