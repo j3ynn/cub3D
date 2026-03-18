@@ -150,6 +150,8 @@ int		valid_texture(t_texture *texture, char *line);
 int		valid_colors(t_colors *colors, char *line);
 int		valid_map(t_map *map);
 int		valid_player(t_map *map, t_player *player);
+int		pars(t_game *game, char *file);
+int		save_map(t_map *map, char *line);
 
 /* ***************************************** */
 /*                  INIT                     */

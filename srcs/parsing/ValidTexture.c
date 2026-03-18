@@ -13,7 +13,7 @@ int	valid_texture(t_texture *texture, char *line)
 	else
 		return (0);
 	return (1);
-}//controllare se va bene
+}
 
 /* quando andrai a chiamarti valid_texture nel parser o dove ti serve farai:
 		valid_texture(game->texture, line) 
