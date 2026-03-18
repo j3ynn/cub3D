@@ -34,37 +34,12 @@ int	is_player(char c)
 		return 0;
 }
 
-//valida i caratteri della mappa e controlla che ci sia un solo giocatore + salva la sua posizione
-int	check_map_char(t_map *map, t_player *player)
+int	init_map(t_map *map)
 {
-	int	i = 0;
-	int	j;
-
-	while (i < map->height)
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (!valid_char(map->map[i][j]))
-			{
-				printf("Error invalid char: %c\n", map->map[i][j]);
-				return 0;
-			}
-			if (is_player(map->map[i][j]))
-			{
-				map->n_players++;
-				player->pos_y = i;
-				player->pos_x = j;
-				player->spawn_dir = map->map[i][j];
-			}
-			j++;
-		}
-		i++;
-	}
-	if (map->n_players != 1)
-	{
-		printf("Error must have exatly 1 player\n");
-		return 0;
-	}
-	return (1);
-}//dividerla in due
+	map->map = 0;
+	map->width = 0;
+	map->height = 0;
+	map->n_players = 0;
+	map->map_valid = true;
+	return 1;
+}

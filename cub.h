@@ -7,6 +7,26 @@
 #include <stdbool.h>
 #include <math.h>
 
+typedef struct s_map
+{
+	char	**map; //mappa, array di stringhe
+	int		width; //larghezza mappa
+	int		height; //altezza mappa
+	int		n_players; //numeri giocatori (deve essere 1)
+	bool	map_valid; //booleano per verificare che la mappa sia valida
+}	t_map;
+
+typedef struct s_player
+{
+	//double per posizione precisa nella cella, movimento fluido
+	double	pos_x; //posizione x
+	double	pos_y; //posizione y
+	double	dir_x; //direzione x
+	double	dir_y; //direzione y
+	char	spawn_dir; //direzione di spawn (N, S, E, W)
+	int		exists; //se il giocatore è nella mappa
+}	t_player;
+
 typedef struct s_texture
 {
 	char	*N_path; //texture muro Nord
@@ -39,25 +59,13 @@ typedef struct s_colors
 //lilla = 221,160,221 HEX = 0xDDA0DD
 //pesca = 255,218,185 HEX = 0xFFDAB9
 
-typedef struct s_map
+typedef struct s_game
 {
-	char	**map; //mappa, array di stringhe
-	int		width; //larghezza mappa
-	int		height; //altezza mappa
-	int		n_players; //numeri giocatori (deve essere 1)
-	bool	map_valid; //booleano per verificare che la mappa sia valida
-}	t_map;
-
-typedef struct s_player
-{
-	//double per posizione precisa nella cella, movimento fluido
-	double	pos_x; //posizione x
-	double	pos_y; //posizione y
-	double	dir_x; //direzione x
-	double	dir_y; //direzione y
-	char	spawn_dir; //direzione di spawn (N, S, E, W)
-	int		exists; //se il giocatore è nella mappa
-}	t_player;
+	t_map		map;
+	t_player	player;
+	t_texture	texture;
+	t_colors	colors;
+}	t_game;
 
 typedef struct s_camera
 {
@@ -96,9 +104,11 @@ void	ft_free(char **arr);
 int		valid_char(char c);
 int		is_player(char c);
 int		init_map(t_map *map);
-int		check_map_char(t_map *map, t_player *player);
 int		finally_map(char *line);
+int		error_player(t_map *map);
 int		valid_texture(t_texture *texture, char *line);
 int		valid_colors(t_colors *colors, char *line);
+int		valid_map(t_map *map);
+int		valid_player(t_map *map, t_player *player);
 
 #endif
