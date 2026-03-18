@@ -1,15 +1,32 @@
 #ifndef CUBE3D_H
 # define CUB3D_H
 
-/* GUARDARE LE LIBRERIE DA INCLUDERE */
-
 #include "libft/libft.h"
-//#include "mlx"
+//#include "mlx.h"
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
 
-/* AGGIUNGERE I COLORI */
+#define LAVENDER   	"\033[1;38;2;230;190;255m"
+#define ORCHID    	"\033[1;38;2;218;112;214m"
+#define PLUM      	"\033[1;38;2;221;160;221m"
+#define RED         "\033[1;31m"
+#define GREEN       "\033[1;32m"
+#define YELLOW      "\033[1;33m"
+#define CYAN        "\033[1;36m"
+#define MAGENTA     "\033[1;35m"
+#define BLUE        "\033[1;34m"
+#define WHITE       "\033[1;37m"
+#define RED_S       "\033[31m"
+#define GREEN_S     "\033[32m"
+#define YELLOW_S    "\033[33m"
+#define CYAN_S      "\033[36m"
+#define MAGENTA_S   "\033[35m"
+#define BLUE_S      "\033[34m"
+#define WHITE_S     "\033[37m"
+#define RESET       "\033[0m"
 
 typedef struct s_map
 {
@@ -31,21 +48,24 @@ typedef struct s_player
 	int		exists; //se il giocatore è nella mappa
 }	t_player;
 
-/* MODIFICARE LE STRUCT TEXTURE */
+typedef struct	s_tex
+{
+	char	*path; //path della texture di ogni muro
+	void	*img;
+	char	*data; //puntatore ai pixel
+	int		w; //larghezza vera della texture (tramite mlx_xmp_file_to_image(...))
+	int		h; //altezza vera della texture (tramite mlx_xmp_file_to_image(...))
+	int		bpp; //bits per pixel
+	int		line_len; //bytes per riga
+	int 	endian; //ordine dei byte (credo non serva idk)
+} 	t_tex;
 
 typedef struct s_texture
 {
-	char	*N_path; //texture muro Nord
-	char	*S_path; //texture muro Sud
-	char	*E_path; //texture muro Est
-	char	*W_path; //texture muro Ovest
-	//struttura immagine
-	void	*N_img; //puntatore immagine Nord
-	void	*S_img; //puntatore immagine Sud
-	void	*E_img; //puntatore immagine Est
-	void	*W_img; //puntatore immagine Ovest
-	int		tex_width; //larghezza texture
-	int		tex_height; //altezza texture
+	t_tex	no;
+	t_tex	so;
+	t_tex	ea;
+	t_tex	we;
 }	t_texture;
 
 typedef struct s_colors
@@ -64,15 +84,6 @@ typedef struct s_colors
 //azzurro pastello = 173,216,230 HEX = 0xADD8E6
 //lilla = 221,160,221 HEX = 0xDDA0DD
 //pesca = 255,218,185 HEX = 0xFFDAB9
-
-/* AGGIUNGERE STRUCT A T_GAME */
-typedef struct s_game
-{
-	t_map		map;
-	t_player	player;
-	t_texture	texture;
-	t_colors	colors;
-}	t_game;
 
 typedef struct s_camera
 {
@@ -94,16 +105,25 @@ typedef struct s_raycast
 	int		map_y; //cella mappa y
 }	t_raycast;
 
-/* MODIFICHE IN T_MLX */
 typedef struct s_mlx
 {
-	void	*mlx_ptr; //puntatore connesione MLX
-	void	*win_ptr; //puntatore per la finestra (importante)
+	void	*process; //puntatore connesione MLX
+	void	*win; //puntatore per la finestra (importante)
 	void	*img_ptr; //puntatore immagine da renderizzare
 	char	*img_data; //buffer dei pixel dell'immagine
-	int		window_width; //larghezza finestra
-	int		window_height; //altezza finestra
+	int		width; //larghezza finestra
+	int		height; //altezza finestra
 }	t_mlx;
+
+typedef struct s_game
+{
+	t_map		map;
+	t_player	player;
+	t_texture	texture;
+	t_colors	colors;
+	t_camera	camera;
+	t_raycast	reycast;
+}	t_game;
 
 void	calc_map_width(t_map *map);
 void	flood_fill(t_map *map, int x, int y);
