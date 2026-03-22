@@ -14,10 +14,3 @@ int	valid_texture(t_texture *texture, char *line)
 		return (0);
 	return (1);
 }
-
-/* quando andrai a chiamarti valid_texture nel parser o dove ti serve farai:
-		valid_texture(game->texture, line) 
-		
-		cosi non ti da errori, perche la struttura texture esiste, solo
-		che ti indica se stai chiamando la texture nord, sud e via dicendo
-		poi quando ci vediamo te le spiego meglio le cose semmai. */

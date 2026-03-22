@@ -3,6 +3,7 @@
 int	pars(t_game *game, char *file)
 {
 	int		fd;
+	int		in_map;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
@@ -18,11 +19,19 @@ int	pars(t_game *game, char *file)
 			valid_texture(&game->texture, line);
 		else if (ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0)
 			valid_colors(&game->colors, line);
+		else if (in_map == 1)
+			ft_error("error non è la mappa");
 		else if (finally_map(line))
 		{
 			save_map(&game->map, line);
+			in_map = 1;
 		}
 	}
+	close(fd);
+	valid_map(&game->map);
+	valid_player(&game->map, &game->player);
+	flood_fill(&game->map, game->player.pos_x, game->player.pos_y);
+	return 1;
 }
 
 int	save_map(t_map *map, char *line)

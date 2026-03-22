@@ -1,6 +1,0 @@
-ho aggiunto nel parsing il file init, per inizializzare le 
-strutture così non va in errore
-
-altra cosa init_map l'ho spsostata nel file init, cosi rimane piu organizzato
-
-se vuoi nel main puoi iniziare a collegarti con il parser
