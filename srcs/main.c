@@ -22,7 +22,7 @@ int main(int ac, char **av)
 		ft_error("Usage: ./cub3d 'map.cub'\n");
 	init_struct(&game);
 	//parte del parsing
-	if (pars(&game, av[1]))
-		ft_error("error parsing fallito (come me)");
+	if (!pars(&game, av[1]))
+		ft_error("✧error parsing fallito (come me)\n");
 	set_game(&game);
 }

@@ -30,7 +30,7 @@ int	error_player(t_map *map)
 {
 	if (map->n_players != 1)
 	{
-		printf("Error must have exatly 1 player\n");
+		printf("✧error must have exatly 1 player\n");
 		return (0);
 	}
 	return (1);

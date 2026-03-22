@@ -13,7 +13,7 @@ int	valid_map(t_map *map)
 		{
 			if (!valid_char(map->map[i][j]))
 			{
-				printf("Error invalid char: %c\n", map->map[i][j]);
+				printf("✧error invalid char: %c\n", map->map[i][j]);
 				return 0;
 			}
 			j++;
@@ -26,9 +26,11 @@ int	valid_map(t_map *map)
 void	flood_fill(t_map *map, int x, int y)
 {
 	if (y < 0 || x < 0 || y >= map->height || x >= map->width)
+		ft_error("✧error map is not closed\n");
+	if (map->map[y][x] == '1' || map->map[y][x] == 'V')
 		return ;
-	if (map->map[y][x] == '1' || map->map[y][x] == ' ' || map->map[y][x] == 'V')
-		return ;
+	if (map->map[y][x] == ' ')
+		ft_error("✧error map not closed\n");
 	map->map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
@@ -39,8 +41,11 @@ void	flood_fill(t_map *map, int x, int y)
 //ci serve nel parsing per assicurarsi che la mappa sia in fondo al file
 int	finally_map(char *line)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
+	if (line[0] == '\n' || line[0] == '\0')
+		return (0);
 	while (line[i] != '\0')
 	{
 		if (!valid_char(line[i]))

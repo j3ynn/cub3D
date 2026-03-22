@@ -1,7 +1,6 @@
 #include "cub.h"
 
 //calcola la larghezza massima della mappa
-//ANCORA NON UTILIZZATA
 void	calc_map_width(t_map *map)
 {
 	int	i = 0;
@@ -20,7 +19,7 @@ void	calc_map_width(t_map *map)
 int	valid_char(char c)
 {
 	if (c == '1' || c == '0' || c == ' ' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W')
+		|| c == 'S' || c == 'E' || c == 'W' || c == '\n')
 		return 1;
 	else
 		return 0;

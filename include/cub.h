@@ -152,6 +152,7 @@ int		valid_map(t_map *map);
 int		valid_player(t_map *map, t_player *player);
 int		pars(t_game *game, char *file);
 int		save_map(t_map *map, char *line);
+int		heart_pars(t_game *game, char *line, int fd, int in_map);
 
 /* ***************************************** */
 /*                  INIT                     */

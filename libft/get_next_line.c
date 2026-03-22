@@ -1,7 +1,6 @@
 #include "get_next_line.h"
 #include "libft.h"
-//deve salvare quello che ha dopo lo \n nella static
-//deve ritornare tutto quello che ha prima dello \n
+
 char	*ft_extraction_storage(char storage[BUFFER_SIZE])
 {
 	int		i;
@@ -24,7 +23,6 @@ char	*ft_extraction_storage(char storage[BUFFER_SIZE])
 	return (str);
 }
 
-//deve leggere la linea tenendo anche quello che ha dopo la \n
 int	ft_check_storage(char storage[BUFFER_SIZE], char **line)
 {
 	char	*line2;
@@ -60,7 +58,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = NULL;
+	line = ft_strdup("");
 	while (1)
 	{
 		if (ft_check_storage(storage, &line))

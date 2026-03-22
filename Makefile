@@ -49,7 +49,7 @@ SRCS 		=  $(wildcard *.c) \
 				$(wildcard srcs/*.c) \
 				$(wildcard srcs/execute/*.c) \
 				$(wildcard srcs/parsing/*.c) \
-				$(wildcard srcs/parsing/utils*.c)
+				$(wildcard srcs/parsing/utils/*.c)
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
