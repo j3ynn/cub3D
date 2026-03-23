@@ -124,3 +124,9 @@ mettendo due giocatori, da errore, ma va avanti nella parte esecutiva
 stessa cosa succede se non metto proprio giocatori
 
 (per il momento ho trovato solo questi, se dovessi trovarne altri ti faccio sapere)
+
+------------------------------------------------------------------------------------
+
+poi devi gestire anche i file.cub, nel senso, in input lui deve accettare solo file
+che finiscano con .cub, ho fatto un esempio con mappa.cube, l'accetta e va in errore anche
+se tutto giusto, ma a prescindere dovrebbe scartarla subito la mappa perchè finisce con .cube
