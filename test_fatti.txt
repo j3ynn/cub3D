@@ -130,3 +130,8 @@ stessa cosa succede se non metto proprio giocatori
 poi devi gestire anche i file.cub, nel senso, in input lui deve accettare solo file
 che finiscano con .cub, ho fatto un esempio con mappa.cube, l'accetta e va in errore anche
 se tutto giusto, ma a prescindere dovrebbe scartarla subito la mappa perchè finisce con .cube
+
+--------------------------------------------------------------------------------------
+
+piccolo bug nel path, alla fine ha un "/n" e nella libreria mlx mi da sempre errore
+ti lascio il mio printf di prova in mlx_init.c
